@@ -8,6 +8,10 @@ class StudentService {
     return Student.find({ approved: false });
   }
 
+  async getAllApprovedStudents() {
+    return Student.find({ approved: true });
+  }
+
   async approveStudent(studentId) {
     return Student.findByIdAndUpdate(studentId, { approved: true }, { new: true });
   }

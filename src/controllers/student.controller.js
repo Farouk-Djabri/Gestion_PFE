@@ -35,6 +35,17 @@ class StudentController {
     }
   }
 
+  async getAllApprovedStudents(req, res) {
+    try {
+      const approvedStudents = await StudentService.getAllApprovedStudents();
+      console.log(approvedStudents)
+      res.json(approvedStudents);
+    } catch (error) {
+      console.error('Error fetching appproved students:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  }
+
   async approveStudent(req, res) {
     const { studentId } = req.params;
     try {
